@@ -116,7 +116,7 @@ if __name__ == '__main__':
 		terms=line.strip().split('\t')
 		for k,v in go_child_dict.items():
 			if terms[1] in k:
-				fo.write(str(terms[1])+'\t'+str(v))
+				fo.write(str(terms[0])+'\t'+str(terms[1])+str(v))
 				fo.write('\n')
 	fo.close()
 	
