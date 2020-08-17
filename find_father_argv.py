@@ -83,7 +83,7 @@ def go_child_fill(obo_file):
 
 
 if __name__ == '__main__':
-	go_child_dict, alt_go_dict = go_child_fill('/home/qilei/omics_final/go.obo')
+	go_child_dict, alt_go_dict = go_child_fill('/home/qilei/git_project/go.obo')
     #assert('GO:2001314' in go_child_dict['GO:0009227'])
     #assert('GO:2001314' in go_child_dict['GO:0034655'])
     #assert('GO:2001314' in go_child_dict['GO:0008150']) # GO:0008150 is the BP root
@@ -110,13 +110,13 @@ if __name__ == '__main__':
 #	out.close()
 
 	#retrive specific BP to 30 general term
-	fisher_res=open(argv[1],'r')#ID 与GOterm 两列文件
-	fo=open(argv[2],'w') #output
+	fisher_res=open(argv[1],'r')       #ID 与GOterm 两列文件
+	fo=open(argv[2],'w')               #output
 	for line in fisher_res.readlines():
 		terms=line.strip().split('\t')
 		for k,v in go_child_dict.items():
 			if terms[1] in k:
-				fo.write(str(terms[0])+'\t'+str(terms[1])+str(v))
+				fo.write(str(terms[0])+'\t'+str(terms[1])+","+",".join(v))
 				fo.write('\n')
 	fo.close()
 	
