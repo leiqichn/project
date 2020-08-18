@@ -16,7 +16,7 @@ def merge():
         geneID=terms[0] #是gene ID
         #print(geneID)
         #GO_dict[geneID]=set()
-        GOs=terms[1].strip().split(';')
+        GOs=terms[1].strip().split(',')
         #print(GOs)
         #GO_dict[geneID]=set()
         if geneID_this_raw==geneID:
@@ -44,9 +44,10 @@ def merge():
 #    print(GO_dict)
     #for line in ID2GO:
         #terms=line.strip().split('\t')
+
     for k,v in GO_dict.items():
             #if terms[0] in k:
-        out.write(str(k)+'\t'+str(v))
+        out.write(str(k)+'\t'+','.join(v))
         out.write('\n')
         #print(str(k)+'\t'+str(v))
 merge()
